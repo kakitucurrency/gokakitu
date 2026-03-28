@@ -26,5 +26,5 @@ func TestBip39(t *testing.T) {
 	require.Nil(t, err)
 	address, err := util.PubkeyToAddress(pubkey)
 	require.Nil(t, err)
-	assert.Equal(t, "nano_1pu7p5n3ghq1i1p4rhmek41f5add1uh34xpb94nkbxe8g4a6x1p69emk8y1d", address)
+	assert.Equal(t, "kshs_1pu7p5n3ghq1i1p4rhmek41f5add1uh34xpb94nkbxe8g4a6x1p69emk8y1d", address)
 }

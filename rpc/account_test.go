@@ -10,10 +10,10 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-const testAccount = "nano_1zcffp784drsmz4oksufxfjut1nb5yh6pg43a6h6bkos39zz19ed6a4r36ny"
+const testAccount = "kshs_1zcffp784drsmz4oksufxfjut1nb5yh6pg43a6h6bkos39zz19ed6a4r36ny"
 
 func getClient() *rpc.Client {
-	return &rpc.Client{URL: "https://mynano.ninja/api/node"}
+	return &rpc.Client{URL: "https://rpc.kakitu.org/api/node"}
 }
 
 func assertEqualBig(t *testing.T, s string, z *big.Int) {
@@ -54,7 +54,7 @@ func TestAccountHistoryRaw(t *testing.T) {
 	require.Len(t, history, 1)
 	h := history[0]
 	assert.Equal(t, "state", h.Type)
-	assert.Equal(t, "nano_1natrium1o3z5519ifou7xii8crpxpk8y65qmkih8e8bpsjri651oza8imdd", h.Representative)
+	assert.Equal(t, "kshs_1natrium1o3z5519ifou7xii8crpxpk8y65qmkih8e8bpsjri651oza8imdd", h.Representative)
 	assertEqualBytes(t, "CEC5287A00F5A50E11A80EC3A63C575D37BFD5BAD87BCB1B7E46DBCBE2F1EC3E", h.Link)
 	assertEqualBig(t, "134000000000000000000000000", &h.Balance.Int)
 	assertEqualBytes(t, "CEC5287A00F5A50E11A80EC3A63C575D37BFD5BAD87BCB1B7E46DBCBE2F1EC3E", h.Previous)
@@ -86,7 +86,7 @@ func TestAccountInfo(t *testing.T) {
 func TestAccountRepresentative(t *testing.T) {
 	representative, err := getClient().AccountRepresentative(testAccount)
 	require.Nil(t, err)
-	assert.Equal(t, "nano_1natrium1o3z5519ifou7xii8crpxpk8y65qmkih8e8bpsjri651oza8imdd", representative)
+	assert.Equal(t, "kshs_1natrium1o3z5519ifou7xii8crpxpk8y65qmkih8e8bpsjri651oza8imdd", representative)
 }
 
 func TestAccountWeight(t *testing.T) {
@@ -112,14 +112,14 @@ func TestAccountsFrontiers(t *testing.T) {
 
 func TestAccountsPending(t *testing.T) {
 	pendings, err := getClient().AccountsPending([]string{
-		testAccount, "nano_159m8t4iedstzcaacikb9hdkhbcxcqzfbw56dutay8ceqagq9wxpsk9ftfq9"}, 1)
+		testAccount, "kshs_159m8t4iedstzcaacikb9hdkhbcxcqzfbw56dutay8ceqagq9wxpsk9ftfq9"}, 1)
 	require.Nil(t, err)
 	require.Len(t, pendings, 1)
-	blocks := pendings["nano_159m8t4iedstzcaacikb9hdkhbcxcqzfbw56dutay8ceqagq9wxpsk9ftfq9"]
+	blocks := pendings["kshs_159m8t4iedstzcaacikb9hdkhbcxcqzfbw56dutay8ceqagq9wxpsk9ftfq9"]
 	require.Len(t, blocks, 1)
 	pending := blocks["96D8422D1CB676EF1B62A313865626A7725C3B9BB5B875601A1460ACF30B5322"]
 	assertEqualBig(t, "123000000000000000000000000", &pending.Amount.Int)
-	assert.Equal(t, "nano_3kwppxjcggzs65fjh771ch6dbuic3xthsn5wsg6i5537jacw7m493ra8574x", pending.Source)
+	assert.Equal(t, "kshs_3kwppxjcggzs65fjh771ch6dbuic3xthsn5wsg6i5537jacw7m493ra8574x", pending.Source)
 }
 
 func TestFrontierCount(t *testing.T) {

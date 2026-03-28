@@ -5,7 +5,7 @@ import (
 	"math/big"
 )
 
-// NanoAmount wraps a raw amount.
+// NanoAmount wraps a raw amount in KSHS (Kakitu).
 type NanoAmount struct {
 	Raw *big.Int
 }
@@ -15,16 +15,16 @@ func (NanoAmount) exp() *big.Int {
 	return x.Exp(x, big.NewInt(30), nil)
 }
 
-// NanoAmountFromString parses NANO amounts in strings.
+// NanoAmountFromString parses KSHS amounts in strings.
 func NanoAmountFromString(s string) (n NanoAmount, err error) {
 	r, ok := new(big.Rat).SetString(s)
 	if !ok {
-		err = errors.New("unable to parse nano amount")
+		err = errors.New("unable to parse kakitu amount")
 		return
 	}
 	r = r.Mul(r, new(big.Rat).SetInt(n.exp()))
 	if !r.IsInt() {
-		err = errors.New("unable to parse nano amount")
+		err = errors.New("unable to parse kakitu amount")
 		return
 	}
 	n.Raw = r.Num()

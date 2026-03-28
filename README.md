@@ -1,7 +1,7 @@
-Gonano
-======
+Gokakitu
+========
 
-Gonano is primarily a command-line tool written in Go for creating and managing Nano wallets, with the ability to both send and receive amounts. Gonano also comprises a `wallet` package which handles key management and an `rpc` package for communicating with Nano nodes.
+Gokakitu is primarily a command-line tool written in Go for creating and managing Kakitu wallets, with the ability to both send and receive amounts. Gokakitu also comprises a `wallet` package which handles key management and an `rpc` package for communicating with Kakitu nodes.
 
 Install
 -------
@@ -11,43 +11,43 @@ Install
 Command-line usage
 ------------------
 
-    gonano add
+    gokakitu add
 
-Add a wallet with a known or random seed. The seed can be of the regular Nano variety, namely a 64 character hexadecimal string. Or a BIP39 mnemonic phrase may be used, in which case the passphrase must be known (enter it as the password). Seeds are stored encrypted with the supplied password.
+Add a wallet with a known or random seed. The seed can be of the regular Kakitu variety, namely a 64 character hexadecimal string. Or a BIP39 mnemonic phrase may be used, in which case the passphrase must be known (enter it as the password). Seeds are stored encrypted with the supplied password.
 
-    gonano add ledger
+    gokakitu add ledger
 
 Add a Ledger hardware wallet.
 
-    gonano list
+    gokakitu list
 
-Lists all the wallets that `gonano` knows about. Each wallet is indexed by a number which must be supplied as the `--wallet` (`-w`) flag when intending to operate on that wallet. For instance,
+Lists all the wallets that `gokakitu` knows about. Each wallet is indexed by a number which must be supplied as the `--wallet` (`-w`) flag when intending to operate on that wallet. For instance,
 
-    gonano list -w0
+    gokakitu list -w0
 
 will list the known accounts within wallet #0. To create a new account within wallet #0, use:
 
-    gonano add -w0
+    gokakitu add -w0
 
 This will prompt for the password to wallet #0.
 
-    gonano send -a <account to send from> <account to send to> <amount>
+    gokakitu send -a <account to send from> <account to send to> <amount>
 
-Sends an amount of Nano from one account to another. The source account (supplied as the `--account` or `-a` flag) must be known to one of the wallets. Proof-of-work generation is built-in and uses as many threads as the number of cores. Alternatively an RPC endpoint may be used for work generation, which defaults to `http://[::1]:7076` (can be specified with the `-s` flag).
+Sends an amount of Kakitu from one account to another. The source account (supplied as the `--account` or `-a` flag) must be known to one of the wallets. Proof-of-work generation is built-in and uses as many threads as the number of cores. Alternatively an RPC endpoint may be used for work generation, which defaults to `http://[::1]:7076` (can be specified with the `-s` flag).
 
-    gonano receive -w0
+    gokakitu receive -w0
 
 Receives all pending amounts for wallet #0. To receive pending amounts for a single account,
 
-    gonano receive -a <account>
+    gokakitu receive -a <account>
 
 Finally,
 
-    gonano rescan -w0
+    gokakitu rescan -w0
 
 Rescans the wallet for non-empty accounts and adds them to the wallet, and
 
-    gonano change -a <account> <representative>
+    gokakitu change -a <account> <representative>
 
 Changes the representative for an account.
 
@@ -91,7 +91,7 @@ Get the owned balance and pending balance of the account. Amounts are in raws.
 
     func (a *Account) Send(account string, amount *big.Int) (hash rpc.BlockHash, err error)
 
-Send `amount` Nano from this to another `account`. The block hash is returned.
+Send `amount` KSHS from this to another `account`. The block hash is returned.
 
     func (a *Account) ReceivePendings() (err error)
 

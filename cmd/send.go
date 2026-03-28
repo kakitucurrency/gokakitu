@@ -9,8 +9,8 @@ import (
 
 var sendCmd = &cobra.Command{
 	Use:   "send",
-	Short: "Send an amount of Nano from an account",
-	Long: `Send an amount of Nano from an account.
+	Short: "Send an amount of Kakitu from an account",
+	Long: `Send an amount of Kakitu from an account.
 
   send <destination> <amount>`,
 	Args: cobra.ExactArgs(2),

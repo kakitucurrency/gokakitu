@@ -37,7 +37,7 @@ func (a *Account) Balance() (balance, pending *big.Int, err error) {
 	return &b.Int, &p.Int, nil
 }
 
-// Send sends an amount to an account.
+// Send sends an amount of KSHS to an account.
 func (a *Account) Send(account string, amount *big.Int) (hash rpc.BlockHash, err error) {
 	block, err := a.SendBlock(account, amount)
 	if err != nil {
@@ -129,7 +129,7 @@ func (a *Account) receivePending(info rpc.AccountInfo, link rpc.BlockHash) (hash
 	if a.representative == "" {
 		a.representative = info.Representative
 		if a.representative == "" {
-			a.representative = "nano_3gonano8jnse4zm65jaiki9tk8ry4jtgc1smarinukho6fmbc45k3icsh6en"
+			a.representative = "kshs_3gokakitu8jnse4zm65jaiki9tk8ry4jtgc1smarinukho6fmbc45k3icsh6en"
 		}
 	}
 	block := &rpc.Block{

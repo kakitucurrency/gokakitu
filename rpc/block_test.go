@@ -32,19 +32,19 @@ func TestBlockCount(t *testing.T) {
 const testBlockInfoHash = "8C1B5D4BBE27F05C7A888D1E691A07C550A81AFEE16D913EE21E1093888B82FD"
 
 func testBlockInfo(t *testing.T, info *rpc.BlockInfo) {
-	assert.Equal(t, "nano_1zcffp784drsmz4oksufxfjut1nb5yh6pg43a6h6bkos39zz19ed6a4r36ny", info.BlockAccount)
+	assert.Equal(t, "kshs_1zcffp784drsmz4oksufxfjut1nb5yh6pg43a6h6bkos39zz19ed6a4r36ny", info.BlockAccount)
 	assertEqualBig(t, "100000000000000000000000000", &info.Amount.Int)
 	assertEqualBig(t, "134000000000000000000000000", &info.Balance.Int)
 	assert.Equal(t, uint64(3), info.Height)
 	assert.Equal(t, uint64(1604610080), info.LocalTimestamp)
 	assert.Equal(t, true, info.Confirmed)
 	assert.Equal(t, "state", info.Contents.Type)
-	assert.Equal(t, "nano_1zcffp784drsmz4oksufxfjut1nb5yh6pg43a6h6bkos39zz19ed6a4r36ny", info.Contents.Account)
+	assert.Equal(t, "kshs_1zcffp784drsmz4oksufxfjut1nb5yh6pg43a6h6bkos39zz19ed6a4r36ny", info.Contents.Account)
 	assertEqualBytes(t, "CEC5287A00F5A50E11A80EC3A63C575D37BFD5BAD87BCB1B7E46DBCBE2F1EC3E", info.Contents.Previous)
-	assert.Equal(t, "nano_1natrium1o3z5519ifou7xii8crpxpk8y65qmkih8e8bpsjri651oza8imdd", info.Contents.Representative)
+	assert.Equal(t, "kshs_1natrium1o3z5519ifou7xii8crpxpk8y65qmkih8e8bpsjri651oza8imdd", info.Contents.Representative)
 	assertEqualBig(t, "134000000000000000000000000", &info.Contents.Balance.Int)
 	assertEqualBytes(t, "CEC5287A00F5A50E11A80EC3A63C575D37BFD5BAD87BCB1B7E46DBCBE2F1EC3E", info.Contents.Link)
-	assert.Equal(t, "nano_3mp773x13xf73rati5p5nry7gqbqqzcuop5usefqwjpushjh5u3yat7bzkoj", info.Contents.LinkAsAccount)
+	assert.Equal(t, "kshs_3mp773x13xf73rati5p5nry7gqbqqzcuop5usefqwjpushjh5u3yat7bzkoj", info.Contents.LinkAsAccount)
 	assertEqualBytes(t, "E0F2C0187F87917C28BB989DA516114F64FEEAD307011F73F1A0982B3603A51740279ED5DA4D428C3F0E652A638BB75F790B695F9D23125B54DB3312A7F28100", info.Contents.Signature)
 	assertEqualBytes(t, "788f7ec074f1854b", info.Contents.Work)
 	assert.Equal(t, "receive", info.Subtype)

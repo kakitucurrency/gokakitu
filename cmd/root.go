@@ -13,9 +13,9 @@ import (
 var cfgFile string
 
 var rootCmd = &cobra.Command{
-	Use:   "gonano",
-	Short: "A Nano wallet written in Go",
-	Long:  `Gonano is a command-line tool for managing Nano wallets.`,
+	Use:   "gokakitu",
+	Short: "A Kakitu wallet written in Go",
+	Long:  `Gokakitu is a command-line tool for managing Kakitu wallets.`,
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
@@ -40,10 +40,10 @@ var rpcURL, rpcWorkURL string
 
 func init() {
 	cobra.OnInitialize(initConfig)
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.gonano.yaml)")
+	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.gokakitu.yaml)")
 	rootCmd.PersistentFlags().IntVarP(&walletIndex, "wallet", "w", -1, "Index of the wallet to use")
 	rootCmd.PersistentFlags().StringVarP(&walletAccount, "account", "a", "", "Account to operate on")
-	rootCmd.PersistentFlags().StringVarP(&rpcURL, "rpc", "r", "https://mynano.ninja/api/node", "RPC endpoint URL")
+	rootCmd.PersistentFlags().StringVarP(&rpcURL, "rpc", "r", "https://rpc.kakitu.org/api/node", "RPC endpoint URL")
 	rootCmd.PersistentFlags().StringVarP(&rpcWorkURL, "rpc-work", "s", "http://[::1]:7076", "RPC endpoint URL for work generation")
 	rootCmd.PersistentFlags().IntVarP(&walletAccountIndex, "account-index", "i", -1, "Index of the account within the wallet to use. Not all operations support it yet")	
 }
@@ -58,9 +58,9 @@ func initConfig() {
 		home, err := homedir.Dir()
 		fatalIf(err)
 
-		// Search config in home directory with name ".gonano" (without extension).
+		// Search config in home directory with name ".gokakitu" (without extension).
 		viper.AddConfigPath(home)
-		viper.SetConfigName(".gonano")
+		viper.SetConfigName(".gokakitu")
 	}
 	viper.SetConfigType("yaml")
 

@@ -146,7 +146,7 @@ func (h *HexData) UnmarshalJSON(data []byte) (err error) {
 	return
 }
 
-// RawAmount represents an amount of nano in RAWs.
+// RawAmount represents an amount of KSHS in RAWs.
 type RawAmount struct{ big.Int }
 
 // MarshalJSON returns the JSON encoding of r.

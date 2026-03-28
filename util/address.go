@@ -17,7 +17,7 @@ func AddressToPubkey(address string) (pubkey []byte, err error) {
 		}
 		address = address[4:]
 	case 65:
-		if address[:5] != "nano_" {
+		if address[:5] != "kshs_" {
 			return
 		}
 		address = address[5:]
@@ -50,7 +50,7 @@ func PubkeyToAddress(pubkey []byte) (address string, err error) {
 	}
 	pubkey = append([]byte{0, 0, 0}, pubkey...)
 	b32 := base32.NewEncoding("13456789abcdefghijkmnopqrstuwxyz")
-	return "nano_" + b32.EncodeToString(pubkey)[4:] + b32.EncodeToString(checksum), nil
+	return "kshs_" + b32.EncodeToString(pubkey)[4:] + b32.EncodeToString(checksum), nil
 }
 
 func checksum(pubkey []byte) (checksum []byte, err error) {
