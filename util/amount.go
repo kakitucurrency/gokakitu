@@ -5,18 +5,18 @@ import (
 	"math/big"
 )
 
-// NanoAmount wraps a raw amount in KSHS (Kakitu).
-type NanoAmount struct {
+// KakituAmount wraps a raw amount in KSHS (Kakitu).
+type KakituAmount struct {
 	Raw *big.Int
 }
 
-func (NanoAmount) exp() *big.Int {
+func (KakituAmount) exp() *big.Int {
 	x := big.NewInt(10)
 	return x.Exp(x, big.NewInt(30), nil)
 }
 
-// NanoAmountFromString parses KSHS amounts in strings.
-func NanoAmountFromString(s string) (n NanoAmount, err error) {
+// KakituAmountFromString parses KSHS amounts in strings.
+func KakituAmountFromString(s string) (n KakituAmount, err error) {
 	r, ok := new(big.Rat).SetString(s)
 	if !ok {
 		err = errors.New("unable to parse kakitu amount")
@@ -31,7 +31,7 @@ func NanoAmountFromString(s string) (n NanoAmount, err error) {
 	return
 }
 
-func (n NanoAmount) String() string {
+func (n KakituAmount) String() string {
 	r := new(big.Rat).SetFrac(n.Raw, n.exp())
 	s := r.FloatString(30)
 	return s[:len(s)-24]

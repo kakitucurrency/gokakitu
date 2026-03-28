@@ -11,11 +11,6 @@ import (
 func AddressToPubkey(address string) (pubkey []byte, err error) {
 	err = errors.New("invalid address")
 	switch len(address) {
-	case 64:
-		if address[:4] != "xrb_" {
-			return
-		}
-		address = address[4:]
 	case 65:
 		if address[:5] != "kshs_" {
 			return

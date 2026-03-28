@@ -101,9 +101,9 @@ Receives all pending amounts to the account.
 
 Change the representative of the account.
 
-    func NanoAmountFromString(s string) (n NanoAmount, err error)
+    func KakituAmountFromString(s string) (n KakituAmount, err error)
 
-Convert the string representation of an amount to a `NanoAmount`. A `NanoAmount` has a `Raw` field containing the amount in raws. A `NanoAmount` can also be converted back to a `string`.
+Convert the string representation of an amount to a `KakituAmount`. A `KakituAmount` has a `Raw` field containing the amount in raws. A `KakituAmount` can also be converted back to a `string`.
 
 `rpc` package
 -------------

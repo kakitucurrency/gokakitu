@@ -55,7 +55,7 @@ func workGPU(data []byte, target uint64, devices []*cl.Device) (work []byte, err
 	if err = program.BuildProgram(devices, ""); err != nil {
 		return
 	}
-	kernel, err := program.CreateKernel("nano_work")
+	kernel, err := program.CreateKernel("kakitu_work")
 	if err != nil {
 		return
 	}

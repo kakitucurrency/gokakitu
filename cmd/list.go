@@ -63,10 +63,10 @@ func getBalanceAndPrint(account string) (balance, pending *rpc.RawAmount) {
 
 func printAmounts(balance, pending *big.Int) {
 	if balance.Sign() > 0 {
-		fmt.Printf(" %s", util.NanoAmount{Raw: balance})
+		fmt.Printf(" %s", util.KakituAmount{Raw: balance})
 	}
 	if pending.Sign() > 0 {
-		fmt.Printf(" (+ %s pending)", util.NanoAmount{Raw: pending})
+		fmt.Printf(" (+ %s pending)", util.KakituAmount{Raw: pending})
 	}
 	fmt.Println()
 }
